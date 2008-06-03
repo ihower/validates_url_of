@@ -1,0 +1,19 @@
+= Validates URL of
+
+This plugin validate URL attribute:
+
+ 1. If data have not http:// or https://, it append http://
+ 2. Check url format by regular expression
+ 3. Send a HTTP request to check header response (only enable in production mode)
+
+== Usage
+
+class Foo < ActiveRecord::Base
+  validates_url_of :url, :message => 'is not valid or not responding'
+end
+
+== Author
+Wen-Tien Chang (ihower@gmail.com)
+
+== License
+Copyright (c) 2008 Handlino Inc., released under the MIT license
