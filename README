@@ -4,13 +4,15 @@ This plugin validate URL attribute:
 
  1. If data have not http:// or https://, it append http://
  2. Check url format by regular expression
- 3. Send a HTTP request to check header response (only enable in production mode)
+ 3. Send a HTTP request to check header response (only enable in production mode and options[:enable_http_check] is true)
 
 == Usage
 
 class Foo < ActiveRecord::Base
-  validates_url_of :url, :message => 'is not valid or not responding'
+  validates_url_of :url, :message => 'is not valid or not responding'.t
 end
+
+# you can omit :message parameter
 
 == Author
 Wen-Tien Chang (ihower@gmail.com)
