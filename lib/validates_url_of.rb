@@ -8,8 +8,12 @@ module Handlino
     module ClassMethods
     
       def validates_url_of( attr_name, options = {} )
-        options[:message] = (options[:message]) ? options[:message] : 'is not valid or not responding'
         options[:enable_http_check] ||= false
+        
+        unless options[:message]
+          options[:message] = 'is not valid'
+          options[:message] += ' or not responding' if options[:enable_http_check]
+        end
         
         define_method( "try_fixing_#{attr_name}_url") do
           value = read_attribute(attr_name)
